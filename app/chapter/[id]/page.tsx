@@ -165,30 +165,30 @@ function ChapterContent({ params }: ChapterPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 pb-20">
       <div className="sticky top-0 bg-white dark:bg-slate-900 bg-opacity-95 dark:bg-opacity-95 border-b border-slate-200 dark:border-slate-700 z-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex items-center justify-between gap-2">
             <Link href="/">
-              <Button variant="ghost" size="sm" className="gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300">
+              <Button variant="ghost" size="sm" className="gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 text-xs sm:text-sm">
                 <ArrowLeft className="w-4 h-4" />
-                Back
+                <span className="hidden sm:inline">Back</span>
               </Button>
             </Link>
-            <h1 className="font-semibold text-slate-900 dark:text-slate-50 text-center flex-1">{questions[0].category}</h1>
+            <h1 className="font-semibold text-slate-900 dark:text-slate-50 text-center flex-1 text-sm sm:text-base line-clamp-1">{questions[0]?.category}</h1>
             <Button 
               variant={isShuffleMode ? "default" : "outline"}
               size="sm" 
               onClick={toggleShuffle}
-              className={`gap-2 ${isShuffleMode ? 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600' : 'dark:border-slate-700'}`}
+              className={`gap-1 sm:gap-2 text-xs sm:text-sm ${isShuffleMode ? 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600' : 'dark:border-slate-700'}`}
               title={isShuffleMode ? "Turn off shuffle" : "Turn on shuffle"}
             >
               <Shuffle className="w-4 h-4" />
-              {isShuffleMode ? 'Random' : 'Shuffle'}
+              <span className="hidden sm:inline">{isShuffleMode ? 'Random' : 'Shuffle'}</span>
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <QuestionDisplay
           key={questions[currentIndex].id}
           question={questions[currentIndex]}
